@@ -30,3 +30,9 @@
 - 原因线索:runtime/runs/worker.py:1425 在每次运行组装时进入 capture_assembly(),使 capture_requested() 恒为真,_complete_assembly 的"无观察者快速通路"不生效。
 - 性质:这是有意的"组装证据"(审计)功能,不应当作缺陷;待做对照实验量化其开销,并评估"工具集与策略不变时复用描述符"的可行性。
 - 待核实:worker.py:1425 外层是否有开关;证据是否写入数据库(可能与 SQLite 每次运行约 180 KB 的增长有关)。
+
+## 2026-11-06 数据库增长取证
+- 数据库 228.6 MB,约 1480 次运行;checkpoints 35,347 行(checkpoint 列合计 158.3 MB,约占 70%),writes 44,214 行。
+- 约每次运行 24 个检查点、每个约 4.7 KB;当前为 checkpoint_channel_mode: full,所以 checkpoint_delta.snapshot_frequency 未生效。
+- 上游已有 delta 模式与留存契约草案(backend/docs/checkpoint-retention-contract.md):检查点构成父链,删除可能悄悄破坏分支/恢复,契约接受前不应实现清理。因此不自行写清理脚本。
+- 下一步:读 delta 模式说明,用同一压测对比 full 与 delta 的空间与吞吐;压测数据视为一次性,用独立数据库。
