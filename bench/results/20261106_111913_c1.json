@@ -1,0 +1,20 @@
+{
+  "time": "2026-11-06 11:19:13",
+  "c": 1,
+  "n": 10,
+  "note": "mock 300ms+20ms/token 60tokens, bg calls off, sqlite",
+  "commit": "2398662",
+  "ok": 10,
+  "bad": {},
+  "wall_s": 19.87,
+  "throughput_rps": 0.5,
+  "ttfe_p50": 0.022,
+  "ttfe_p95": 0.144,
+  "total_p50": 1.94,
+  "total_p95": 2.288,
+  "total_p99": 2.368,
+  "gateway_rss_mb": [
+    278,
+    296
+  ]
+}

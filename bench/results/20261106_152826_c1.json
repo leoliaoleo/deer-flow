@@ -1,0 +1,22 @@
+{
+  "time": "2026-11-06 15:28:26",
+  "c": 1,
+  "n": 50,
+  "note": "baseline stock config, mock, bg off, sqlite",
+  "commit": "fe603e7",
+  "ok": 50,
+  "bad": {},
+  "wall_s": 93.48,
+  "throughput_rps": 0.53,
+  "ttfe_p50": 0.021,
+  "ttfe_p95": 0.148,
+  "ttft_p50": 0.168,
+  "ttft_p95": 0.302,
+  "total_p50": 1.847,
+  "total_p95": 1.988,
+  "total_p99": 1.998,
+  "gateway_rss_mb": [
+    289,
+    303
+  ]
+}
