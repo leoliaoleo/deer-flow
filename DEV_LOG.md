@@ -36,3 +36,10 @@
 - 约每次运行 24 个检查点、每个约 4.7 KB;当前为 checkpoint_channel_mode: full,所以 checkpoint_delta.snapshot_frequency 未生效。
 - 上游已有 delta 模式与留存契约草案(backend/docs/checkpoint-retention-contract.md):检查点构成父链,删除可能悄悄破坏分支/恢复,契约接受前不应实现清理。因此不自行写清理脚本。
 - 下一步:读 delta 模式说明,用同一压测对比 full 与 delta 的空间与吞吐;压测数据视为一次性,用独立数据库。
+
+## 2026-11-06 晚 多轮实验作废与教训
+- 多轮对话(100 个对话 x 8 轮,并发 10)实验:客户端显示 800/800 成功,但服务端 runs 表中 631(full)和 约 631(delta,日志 762 行错误)个运行状态为 error,错误均为 sqlite3.OperationalError: database is locked(langgraph sqlite aio.aput 写检查点)。
+- 因此该实验的体积与吞吐数据全部作废(检查点数异常偏少是失败运行导致)。单轮实验日志错误数为 0,数据有效。
+- 教训:客户端 "HTTP 200 + end 事件" 不能代表服务端成功;服务端把存储错误作为正常结束的事件返回。压测汇总现在必须检查 runs 表状态,存在非 success 即标记 INVALID。
+- 线索(未验证):同一对话上相邻两轮的收尾写入与下一轮写入争抢 SQLite 写锁;上游文档称 SQLite 适用于单节点,多 worker 用 Postgres。
+- 待做:降低并发复测(并发 3),确认错误是否消失;再决定在 Postgres 上重做多轮实验。
