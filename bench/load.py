@@ -65,7 +65,7 @@ async def main():
     ap.add_argument("--note", default="")
     ap.add_argument("--warmup", type=int, default=3)
     a = ap.parse_args()
-    tok = open(os.path.expanduser("~/.deerflow_pat")).read().strip()
+    tok = open(os.path.expanduser(os.environ.get("DF_PAT_FILE", "~/.deerflow_pat"))).read().strip()
     todo = iter(range(a.n))
     res = []
 
