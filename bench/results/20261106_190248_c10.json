@@ -1,0 +1,22 @@
+{
+  "time": "2026-11-06 19:02:48",
+  "c": 10,
+  "n": 300,
+  "note": "ab mode=delta snap=10 fresh-db",
+  "commit": "eabf25d",
+  "ok": 300,
+  "bad": {},
+  "wall_s": 129.66,
+  "throughput_rps": 2.31,
+  "ttfe_p50": 0.289,
+  "ttfe_p95": 1.007,
+  "ttft_p50": 1.003,
+  "ttft_p95": 1.866,
+  "total_p50": 4.322,
+  "total_p95": 5.324,
+  "total_p99": 6.329,
+  "gateway_rss_mb": [
+    282,
+    362
+  ]
+}
