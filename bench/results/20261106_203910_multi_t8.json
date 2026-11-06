@@ -1,0 +1,25 @@
+{
+  "time": "2026-11-06 20:39:10",
+  "c": 3,
+  "threads": 100,
+  "turns": 8,
+  "note": "ab mode=full snap=10 fresh-db multi-turn",
+  "commit": "576c2e8",
+  "ok_runs": 800,
+  "expected_runs": 800,
+  "bad": {},
+  "wall_s": 539.75,
+  "throughput_rps": 1.48,
+  "total_p50": 1.922,
+  "total_p95": 2.334,
+  "p50_by_turn": {
+    "1": 1.909,
+    "2": 1.939,
+    "3": 1.937,
+    "4": 1.929,
+    "5": 1.923,
+    "6": 1.933,
+    "7": 1.903,
+    "8": 1.917
+  }
+}

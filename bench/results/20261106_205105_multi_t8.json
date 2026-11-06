@@ -1,0 +1,25 @@
+{
+  "time": "2026-11-06 20:51:05",
+  "c": 3,
+  "threads": 100,
+  "turns": 8,
+  "note": "ab mode=delta snap=10 fresh-db multi-turn",
+  "commit": "b550e06",
+  "ok_runs": 800,
+  "expected_runs": 800,
+  "bad": {},
+  "wall_s": 542.45,
+  "throughput_rps": 1.47,
+  "total_p50": 1.941,
+  "total_p95": 2.342,
+  "p50_by_turn": {
+    "1": 1.925,
+    "2": 1.932,
+    "3": 1.937,
+    "4": 1.935,
+    "5": 1.94,
+    "6": 1.945,
+    "7": 1.945,
+    "8": 1.97
+  }
+}
