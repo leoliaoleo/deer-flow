@@ -24,3 +24,9 @@
 - token_budget 默认关闭,按每次运行计;按用户或租户的配额未发现,待读代码确认。
 - 认证:PAT 需会话创建,前端无入口;登录接口 /api/v1/auth/login/local;文档称无细粒度 RBAC(待核实)。
 - extensions_config.json 是示例,MCP 全部未启用,my_package 警告为占位符噪音。
+
+## 2026-11-06 瓶颈定位(进行中)
+- py-spy(--gil):并发 10 下约 43% 的 GIL 时间在 assemble_lead_agent(其中约 31% 是 build_assembly_descriptor,对每个工具做描述和 JSON Schema 哈希);Gateway 进程 CPU 约 65% 到 75%,压测脚本与 mock 的 CPU 均低于 4%。
+- 原因线索:runtime/runs/worker.py:1425 在每次运行组装时进入 capture_assembly(),使 capture_requested() 恒为真,_complete_assembly 的"无观察者快速通路"不生效。
+- 性质:这是有意的"组装证据"(审计)功能,不应当作缺陷;待做对照实验量化其开销,并评估"工具集与策略不变时复用描述符"的可行性。
+- 待核实:worker.py:1425 外层是否有开关;证据是否写入数据库(可能与 SQLite 每次运行约 180 KB 的增长有关)。
