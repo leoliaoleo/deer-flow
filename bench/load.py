@@ -77,6 +77,11 @@ async def main():
                 return
             res.append(await one(client, tok, a.model))
 
+    # preflight: refuse to record numbers when the gateway is unreachable
+    try:
+        httpx.get(BASE + "/api/v1/auth/setup-status", timeout=5)
+    except Exception as e:
+        raise SystemExit("预检失败:连不上 %s (%s),结果不保存。" % (BASE, type(e).__name__))
     rss0 = gw_rss_mb()
     limits = httpx.Limits(max_connections=a.c + 5, max_keepalive_connections=a.c + 5)
     async with httpx.AsyncClient(timeout=httpx.Timeout(180.0), limits=limits) as client:
