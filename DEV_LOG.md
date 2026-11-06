@@ -43,3 +43,11 @@
 - 教训:客户端 "HTTP 200 + end 事件" 不能代表服务端成功;服务端把存储错误作为正常结束的事件返回。压测汇总现在必须检查 runs 表状态,存在非 success 即标记 INVALID。
 - 线索(未验证):同一对话上相邻两轮的收尾写入与下一轮写入争抢 SQLite 写锁;上游文档称 SQLite 适用于单节点,多 worker 用 Postgres。
 - 待做:降低并发复测(并发 3),确认错误是否消失;再决定在 Postgres 上重做多轮实验。
+
+## 2026-11-06 深夜 多实例环境跑通
+- 依赖:backend 同步 asyncpg 0.31.0、psycopg 3.3.3、psycopg-binary 3.3.3、psycopg-pool 3.3.0、langgraph-checkpoint-postgres 3.1.3(5 个包,uv sync --locked,走官方 PyPI,约 5 分钟)。
+- scripts/dev_multi_instance.sh up --skip-install:Postgres 17-alpine、Redis 7-alpine(与上游默认一致)、Gateway A(8001)、Gateway B(8011)、nginx(2027)均在约 5 秒内就绪。
+- check --with-llm:8 项全部 PASS,0 FAIL,0 SKIP(健康/会话/内部令牌/对话可见/上传/Skill 开关/nginx 轮询/SSE 加入加 Last-Event-ID 续传)。
+- 注意:本次 base config 用的是原 config.yaml(含 deepseek),因为新终端没有带 DEERFLOW_MI_BASE_CONFIG;lead_agent 取 models[0](mock)故未产生费用。压测前必须确认只用 bench 配置。
+- 上游把"stop b --kill 时 A 的运行不得变 error""跨实例取消约 10 秒内生效"列为"手工检查"(MANUAL_CHECKS),未自动化也未量化,这是我们可补的方向。
+- 示例配置中的 my_package 拦截器路径导致每个 Gateway 启动时打印 ImportError 调用栈(无功能影响),疑似可清理的小问题,暂不处理。
