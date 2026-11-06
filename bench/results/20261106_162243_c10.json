@@ -1,0 +1,22 @@
+{
+  "time": "2026-11-06 16:22:43",
+  "c": 10,
+  "n": 300,
+  "note": "profiling: top + py-spy attached",
+  "commit": "a447ad3",
+  "ok": 300,
+  "bad": {},
+  "wall_s": 142.93,
+  "throughput_rps": 2.1,
+  "ttfe_p50": 0.431,
+  "ttfe_p95": 1.315,
+  "ttft_p50": 1.429,
+  "ttft_p95": 2.123,
+  "total_p50": 4.691,
+  "total_p95": 6.249,
+  "total_p99": 7.053,
+  "gateway_rss_mb": [
+    385,
+    389
+  ]
+}

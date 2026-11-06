@@ -76,6 +76,8 @@ async def main():
             except StopIteration:
                 return
             res.append(await one(client, tok, a.model))
+            if len(res) % 25 == 0:  # progress
+                print("  已完成 %d/%d" % (len(res), a.n), flush=True)
 
     # preflight: refuse to record numbers when the gateway is unreachable
     try:
