@@ -1,0 +1,22 @@
+{
+  "time": "2026-11-06 19:16:29",
+  "c": 10,
+  "n": 300,
+  "note": "ab mode=full snap=10 fresh-db",
+  "commit": "cef5732",
+  "ok": 300,
+  "bad": {},
+  "wall_s": 128.98,
+  "throughput_rps": 2.33,
+  "ttfe_p50": 0.374,
+  "ttfe_p95": 1.114,
+  "ttft_p50": 1.235,
+  "ttft_p95": 2.101,
+  "total_p50": 4.235,
+  "total_p95": 5.467,
+  "total_p99": 6.317,
+  "gateway_rss_mb": [
+    282,
+    366
+  ]
+}

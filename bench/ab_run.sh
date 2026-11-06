@@ -101,6 +101,10 @@ cps = one('select count(*) from checkpoints')
 print('runs=%d checkpoints=%d writes=%d' % (runs, cps, one('select count(*) from writes')))
 print('checkpoint 列合计: %.1f MB' % ((one('select sum(length(checkpoint)) from checkpoints') or 0) / 1048576))
 print('每次运行(含预热): %.1f 个检查点, %.1f KB' % (cps / runs, tot / 1024 / runs))
+st = con.execute('select status, count(*) from runs group by status').fetchall()
+print('runs 状态:', st)
+bad = sum(n for s_, n in st if s_ != 'success')
+print('*** INVALID:服务端有 %d 个运行不是 success,本次结果作废 ***' % bad if bad else '服务端运行状态: 全部 success')
 PY
 fi
 if [ "${AB_LOAD:-single}" = "multi" ]; then EXP=$(( ${AB_THREADS:-100} * ${AB_TURNS:-8} + 4 )); else EXP=$((N+3)); fi
