@@ -77,7 +77,11 @@ fi
 python3 bench/ab_setup.py "$RUN" || fail "创建账号或令牌失败"
 
 # 7) 压测
-DF_PAT_FILE="$RUN/pat" ~/venvs/bench/bin/python bench/load.py -c "$C" -n "$N" --note "ab mode=$MODE snap=$SNAP fresh-db"
+if [ "${AB_LOAD:-single}" = "multi" ]; then
+  DF_PAT_FILE="$RUN/pat" ~/venvs/bench/bin/python bench/load_multi.py -c "$C" --threads "${AB_THREADS:-100}" --turns "${AB_TURNS:-8}" --note "ab mode=$MODE snap=$SNAP fresh-db multi-turn"
+else
+  DF_PAT_FILE="$RUN/pat" ~/venvs/bench/bin/python bench/load.py -c "$C" -n "$N" --note "ab mode=$MODE snap=$SNAP fresh-db"
+fi
 
 # 8) 停止并统计
 make stop >/dev/null 2>&1; sleep 3
@@ -99,7 +103,8 @@ print('checkpoint 列合计: %.1f MB' % ((one('select sum(length(checkpoint)) fr
 print('每次运行(含预热): %.1f 个检查点, %.1f KB' % (cps / runs, tot / 1024 / runs))
 PY
 fi
-echo "mock 请求增量: $(( $(grep -c MOCKREQ ~/mock.log) - MOCK_BEFORE ))(预期 $((N+3)))"
+if [ "${AB_LOAD:-single}" = "multi" ]; then EXP=$(( ${AB_THREADS:-100} * ${AB_TURNS:-8} + 4 )); else EXP=$((N+3)); fi
+echo "mock 请求增量: $(( $(grep -c MOCKREQ ~/mock.log) - MOCK_BEFORE ))(预期 $EXP)"
 echo "gateway 日志 ERROR 行数: $(grep -c ' - ERROR - ' "$RUN/gateway.log" 2>/dev/null)"
 OLD_AFTER=$(stat -c '%s %Y' "$OLD_DB" 2>/dev/null || echo none)
 [ "$OLD_BEFORE" = "$OLD_AFTER" ] && echo "旧数据库未被改动" || echo "警告: 旧数据库发生了变化"
