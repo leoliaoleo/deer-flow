@@ -52,6 +52,9 @@ async def models():
 @app.post("/v1/chat/completions")
 async def chat(request: Request):
     body = await request.json()
+    _m = body.get("messages") or []
+    _last = str(_m[-1].get("content") if _m else "")[:60].replace("\n", " ")
+    print("MOCKREQ stream=%s tools=%s msgs=%d last=%r" % (bool(body.get("stream")), bool(body.get("tools")), len(_m), _last), flush=True)
     model = body.get("model", "mock-llm")
     stream = bool(body.get("stream"))
     n = min(int(body.get("max_tokens") or OUTPUT_TOKENS), OUTPUT_TOKENS)
