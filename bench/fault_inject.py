@@ -102,6 +102,7 @@ async def watch_recovery(client, r, t_kill, timeout):
 
 async def watch_join(client, r, t_kill, timeout):
     url = "%s/api/threads/%s/runs/%s/join" % (A, r["thread_id"], r["run_id"])
+    r["join_start_s"] = round(time.time() - t_kill, 1)
     try:
         async with client.stream("GET", url, headers={**HDR, "Accept": "text/event-stream"},
                                  timeout=httpx.Timeout(timeout + 5)) as resp:
@@ -137,7 +138,7 @@ async def watch_join(client, r, t_kill, timeout):
         r["join_err"] = type(e).__name__
 
 
-async def trial(client, per_gw, timeout):
+async def trial(client, per_gw, timeout, early_join=False):
     rs = []
     for label, base in (("A", A), ("B", B)):
         for _ in range(per_gw):
@@ -153,15 +154,19 @@ async def trial(client, per_gw, timeout):
     rc, out = await asyncio.to_thread(sh, "stop", "b", "--kill")
     t_kill = time.time()
     print("  kill b: rc=%s %s" % (rc, out.splitlines()[-1] if out else ""), flush=True)
-    await asyncio.gather(*tasks)
     a = [r for r in rs if r["label"] == "A"]
     bs_all = [r for r in rs if r["label"] == "B"]
+    bs = [r for r in bs_all if r["run_id"]]
+    watchers = []
+    if early_join:
+        watchers = [asyncio.create_task(f(client, r, t_kill, timeout)) for r in bs for f in (watch_recovery, watch_join)]
+    await asyncio.gather(*tasks)
     for r in a:
         if r["run_id"]:
             r["server_status"], _ = await get_status(client, r)
-    bs = [r for r in bs_all if r["run_id"]]
-    await asyncio.gather(*[watch_recovery(client, r, t_kill, timeout) for r in bs],
-                         *[watch_join(client, r, t_kill, timeout) for r in bs])
+    if not early_join:
+        watchers = [asyncio.create_task(f(client, r, t_kill, timeout)) for r in bs for f in (watch_recovery, watch_join)]
+    await asyncio.gather(*watchers)
     return {
         "a_client_ended": "%d/%d" % (sum(r["ended"] for r in a), len(a)),
         "a_server_status": count(r.get("server_status") for r in a),
@@ -172,6 +177,7 @@ async def trial(client, per_gw, timeout):
         "b_final_status": count(r.get("final") for r in bs),
         "b_recovered_s": sorted(r["rec_s"] for r in bs if r.get("rec_s") is not None),
         "b_join_end_s": sorted(r["join_end_s"] for r in bs if r.get("join_end_s") is not None),
+        "b_join_start_s": sorted(r["join_start_s"] for r in bs if r.get("join_start_s") is not None),
         "b_join": count((r.get("join_http"), r.get("join_err")) for r in bs),
         "sample_info": next((r["info"] for r in bs if r.get("info")), None),
         "join_sample": next(({"counts": r["join_counts"], "events": r["join_events"], "last_messages_s": r.get("join_last_msg_s"),
@@ -188,6 +194,7 @@ async def main():
     ap.add_argument("--note", default="")
     ap.add_argument("--jitter", type=float, default=0.0)
     ap.add_argument("--wait", type=float, default=0.0)
+    ap.add_argument("--early-join", action="store_true")
     a = ap.parse_args()
     for name, base in (("A", A), ("B", B)):
         try:
@@ -206,7 +213,7 @@ async def main():
                 print("  等待 %.1f s" % js, flush=True)
                 await asyncio.sleep(js)
             print("试验 %d/%d" % (i + 1, a.trials), flush=True)
-            res = await trial(client, a.per_gw, a.timeout)
+            res = await trial(client, a.per_gw, a.timeout, a.early_join)
             print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
             results.append(res)
             await asyncio.to_thread(sh, "start", "b")
@@ -224,7 +231,7 @@ async def main():
     os.makedirs(d, exist_ok=True)
     fn = os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + "_fault_kill_b.json")
     with open(fn, "w") as f:
-        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note, "jitter": a.jitter, "wait": a.wait,
+        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note, "jitter": a.jitter, "wait": a.wait, "early_join": a.early_join,
                    "trials": results}, f, ensure_ascii=False, indent=2)
     print("已保存:", fn)
 

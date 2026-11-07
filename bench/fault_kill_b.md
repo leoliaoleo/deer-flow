@@ -132,3 +132,13 @@
 
 ## 运维含义(未经验证的推断)
 状态接口在约 21 s 已报告 error,而重连的流客户端在这些试验里要多等约 13 s 才结束;客户端若同时轮询运行状态,可更早得到结论。
+
+---
+
+# 更正与补充:join 起点是脚本造成的;H 的日志检验(2026-11-07)
+
+- 更正:fault_inject.py 在杀 B 之后先 await A 上 4 个流全部结束(约 5 s),才开始 join,所以 join 起点约 4.7 到 5.0 s。前文"20 s 与 35 s 约等于该起点加 15 s、30 s"与"重连的流客户端要多等约 13 s"都取决于该起点,不是系统性质;若流消费者每 15 s 做空闲存活检查(README 描述,未读代码),额外等待应在 0 到 15 s 之间。
+- H 的日志检验:A 日志 18 个恢复事件,失败发布行数序列与运行前写下的预测完全一致(共 44 行)。恢复耗时 18.5 到 26.5 s 的 11 次各 4 行 "Failed to publish recovered run stream end",恢复耗时 27.4 到 32.8 s 的 7 次为 0 行,边界在 26.5 到 27.4 s 之间。
+- 失败原因:redis.py 的 _xadd_without_active_producer 抛出 "Cannot publish stream data ... because another active producer exists"(经 publish_end,由 deps.py 的 _publish_recovered_run_stream_end 调用),即补写 end 时已死亡生产者的登记尚未过期。27 s 的门限与 run_ownership 的 15 s 无关(同组试验恢复耗时覆盖 18 到 33 s,门限不变),更像独立的常量;其来源未读代码。
+- 推断(未验证):缩短运行租约只能让状态接口更早报告失败,流客户端要等到生产者登记过期以后才收到补发的 end。lease 30 时恢复总晚于该门限,看不出这一点。
+- end 事件的 data 为 null,join 流中没有 error 事件(values 事件的内容未检查):只看流的客户端无法区分正常结束与被恢复为 error 的结束,需要再查运行状态。

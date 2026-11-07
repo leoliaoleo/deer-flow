@@ -84,3 +84,8 @@
 - 日志中恢复后常出现 "Failed to publish recovered run stream end"。
 - 新假设 H(事后提出):恢复早于约 27 s 时补写 end 失败,join 靠 15 s 空闲检查结束;晚于约 27 s 时补写成功。
 - 预测(运行前写下):A 日志 18 个恢复事件中,恢复耗时 < 27 s 的 11 次各有 4 行失败发布,≥ 27 s 的 7 次为 0 行。顺序:前 8 次 0,0,4,0,4,4,4,0;等待 5 s 的 5 次 4,4,4,0,0;等待 30 s 的 5 次 4,4,0,4,4。
+
+## H 的日志检验结果与脚本人为因素更正
+- H 的日志预测在 18 个恢复事件上全部吻合(失败发布 0/4 行序列与预测一致,共 44 行):恢复耗时 18.5 到 26.5 s 的 11 次各 4 行失败发布,27.4 到 32.8 s 的 7 次为 0 行;失败原因为 redis.py _xadd_without_active_producer 抛出 "another active producer exists"(经 publish_end,由 deps.py 的 _publish_recovered_run_stream_end 调用)。27 s 门限的来源未读代码,未解释。
+- 更正:fault_inject.py 先等 A 的 4 个流结束(约 5 s)才开始 join,所以 join 起点约 4.8 s 是脚本造成的,join_end 的 20 s / 35 s 取决于该起点,不是系统性质。
+- 预测(运行前写下):让 join 在杀 B 的同一时刻开始(join 起点约 0 到 2 s)。早恢复试验 join_end 在约 29.5 到 33 s;晚恢复试验 join_end 在恢复时刻 ±1.5 s 内。若早恢复试验的 join_end 仍稳定在约 35 s,则"空闲检查从连接时刻起算"的模型不成立。
