@@ -94,3 +94,8 @@
 - 现象:docker run -p 127.0.0.1:55432:5432 报 "ports are not available ... /forwards/expose returned unexpected status: 500"。前两次相同端口可用。
 - 原因:netsh interface ipv4 show excludedportrange protocol=tcp 显示 55374 到 55473 在 Windows 的动态保留范围内(Hyper-V/WSL/Docker 网络组件占用,重启后可能变化),55432 落在其中。重启 Docker 无效。
 - 处理:把多实例脚本的 Postgres/Redis 端口通过 DEERFLOW_MI_POSTGRES_PORT / DEERFLOW_MI_REDIS_PORT 换到未保留的 45432 / 46379;up_mi.sh 的端口占用检查改为随之可配。
+
+## B 重启失败(2026-11-07 early-join 第 1 次试验之后)
+- 现象:fault_inject.py 在试验 1 之后自动 `start b`,120 秒内没有恢复;gateway-b.log 末尾为 asyncpg 的 ConnectionRefusedError 和 "Application startup failed",此时 deerflow-mi-postgres 已运行 30 分钟、45432 端口在监听。此前 20 次试验 B 均能自动恢复。
+- 预测(运行前写下):手动 `start b` 能成功(即瞬时拒绝);若再次出现 Connection refused,则存在持续性的 Postgres 连接问题,需要查端口转发或 Postgres 状态。
+- 脚本盲区:恢复 B 失败时只打印一行并直接保存结果,没有把失败写进 JSON。
