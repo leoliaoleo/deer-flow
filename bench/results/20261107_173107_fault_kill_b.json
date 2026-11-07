@@ -1,0 +1,1093 @@
+{
+  "run_ownership": "{\"lease_seconds\": 15, \"grace_seconds\": 5, \"heartbeat_enabled\": true}",
+  "per_gw": 4,
+  "timeout": 180,
+  "note": "pttl probe, mock 200 tokens",
+  "jitter": 20.0,
+  "wait": 0.0,
+  "early_join": true,
+  "pttl": true,
+  "delays": "0,3,6,8",
+  "trials": [
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 26672,
+          "first_seen_s": 0.28,
+          "gone_s": 27.04,
+          "rec_s": 30.4,
+          "join_end_s": 29.9,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26669,
+          "first_seen_s": 0.28,
+          "gone_s": 27.04,
+          "rec_s": 30.4,
+          "join_end_s": 29.9,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26673,
+          "first_seen_s": 0.28,
+          "gone_s": 27.04,
+          "rec_s": 30.4,
+          "join_end_s": 29.9,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26667,
+          "first_seen_s": 0.28,
+          "gone_s": 27.04,
+          "rec_s": 30.4,
+          "join_end_s": 29.9,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        30.4,
+        30.4,
+        30.4,
+        30.4
+      ],
+      "b_join_end_s": [
+        29.9,
+        29.9,
+        29.9,
+        29.9
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 8,
+          "end": 1
+        },
+        "events": [
+          [
+            0.4,
+            "metadata"
+          ],
+          [
+            0.4,
+            "values"
+          ],
+          [
+            0.4,
+            "values"
+          ],
+          [
+            0.4,
+            "values"
+          ],
+          [
+            0.4,
+            "values"
+          ],
+          [
+            29.9,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.4,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 0.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 23643,
+          "first_seen_s": 0.01,
+          "gone_s": 23.93,
+          "rec_s": 24.8,
+          "join_end_s": 24.4,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23631,
+          "first_seen_s": 0.01,
+          "gone_s": 23.93,
+          "rec_s": 24.8,
+          "join_end_s": 24.4,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23637,
+          "first_seen_s": 0.01,
+          "gone_s": 23.93,
+          "rec_s": 24.8,
+          "join_end_s": 24.4,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23650,
+          "first_seen_s": 0.01,
+          "gone_s": 23.93,
+          "rec_s": 24.8,
+          "join_end_s": 24.4,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        24.8,
+        24.8,
+        24.8,
+        24.8
+      ],
+      "b_join_end_s": [
+        24.4,
+        24.4,
+        24.4,
+        24.4
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 38,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            24.4,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 3.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 20605,
+          "first_seen_s": 0.02,
+          "gone_s": 20.69,
+          "rec_s": 23.7,
+          "join_end_s": 23.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20619,
+          "first_seen_s": 0.02,
+          "gone_s": 20.69,
+          "rec_s": 23.8,
+          "join_end_s": 23.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20599,
+          "first_seen_s": 0.02,
+          "gone_s": 20.69,
+          "rec_s": 23.8,
+          "join_end_s": 23.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20611,
+          "first_seen_s": 0.02,
+          "gone_s": 20.69,
+          "rec_s": 23.8,
+          "join_end_s": 23.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        23.7,
+        23.8,
+        23.8,
+        23.8
+      ],
+      "b_join_end_s": [
+        23.1,
+        23.1,
+        23.1,
+        23.1
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 69,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            23.1,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.2,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 6.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 28715,
+          "first_seen_s": 0.01,
+          "gone_s": 28.8,
+          "rec_s": 29.1,
+          "join_end_s": 30.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 28730,
+          "first_seen_s": 0.01,
+          "gone_s": 28.8,
+          "rec_s": 29.0,
+          "join_end_s": 30.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 28722,
+          "first_seen_s": 0.01,
+          "gone_s": 28.8,
+          "rec_s": 29.1,
+          "join_end_s": 30.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 28734,
+          "first_seen_s": 0.01,
+          "gone_s": 28.8,
+          "rec_s": 29.1,
+          "join_end_s": 30.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        29.0,
+        29.1,
+        29.1,
+        29.1
+      ],
+      "b_join_end_s": [
+        30.3,
+        30.3,
+        30.3,
+        30.3
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 88,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.3,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.2,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 8.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 26750,
+          "first_seen_s": 0.01,
+          "gone_s": 27.05,
+          "rec_s": 29.1,
+          "join_end_s": 28.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26738,
+          "first_seen_s": 0.01,
+          "gone_s": 27.05,
+          "rec_s": 28.0,
+          "join_end_s": 28.1,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26744,
+          "first_seen_s": 0.01,
+          "gone_s": 27.05,
+          "rec_s": 29.1,
+          "join_end_s": 28.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 26755,
+          "first_seen_s": 0.01,
+          "gone_s": 27.05,
+          "rec_s": 29.1,
+          "join_end_s": 28.1,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        28.0,
+        29.1,
+        29.1,
+        29.1
+      ],
+      "b_join_end_s": [
+        28.1,
+        28.1,
+        28.1,
+        28.1
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 9,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            28.1,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 0.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 23743,
+          "first_seen_s": 0.01,
+          "gone_s": 23.99,
+          "rec_s": 33.3,
+          "join_end_s": 32.4,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23762,
+          "first_seen_s": 0.01,
+          "gone_s": 23.99,
+          "rec_s": 33.3,
+          "join_end_s": 32.4,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23749,
+          "first_seen_s": 0.01,
+          "gone_s": 23.99,
+          "rec_s": 33.3,
+          "join_end_s": 32.4,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 23756,
+          "first_seen_s": 0.01,
+          "gone_s": 23.99,
+          "rec_s": 33.3,
+          "join_end_s": 32.4,
+          "pred_publish_failed": false,
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        33.3,
+        33.3,
+        33.3,
+        33.3
+      ],
+      "b_join_end_s": [
+        32.4,
+        32.4,
+        32.4,
+        32.4
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 39,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            32.4,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 3.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 20365,
+          "first_seen_s": 0.01,
+          "gone_s": 20.46,
+          "rec_s": 21.7,
+          "join_end_s": 21.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20345,
+          "first_seen_s": 0.01,
+          "gone_s": 20.46,
+          "rec_s": 21.7,
+          "join_end_s": 21.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20351,
+          "first_seen_s": 0.01,
+          "gone_s": 20.46,
+          "rec_s": 21.7,
+          "join_end_s": 21.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        },
+        {
+          "first_pttl_ms": 20360,
+          "first_seen_s": 0.01,
+          "gone_s": 20.46,
+          "rec_s": 21.7,
+          "join_end_s": 21.3,
+          "pred_publish_failed": "ambiguous",
+          "obs_publish_failed": false
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        21.7,
+        21.7,
+        21.7,
+        21.7
+      ],
+      "b_join_end_s": [
+        21.3,
+        21.3,
+        21.3,
+        21.3
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 70,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            21.3,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.2,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 6.0
+    },
+    {
+      "pttl_rule": [
+        {
+          "first_pttl_ms": 28662,
+          "first_seen_s": 0.02,
+          "gone_s": 28.93,
+          "rec_s": 15.7,
+          "join_end_s": 30.4,
+          "pred_publish_failed": true,
+          "obs_publish_failed": true
+        },
+        {
+          "first_pttl_ms": 28680,
+          "first_seen_s": 0.02,
+          "gone_s": 28.93,
+          "rec_s": 16.7,
+          "join_end_s": 30.4,
+          "pred_publish_failed": true,
+          "obs_publish_failed": true
+        },
+        {
+          "first_pttl_ms": 28668,
+          "first_seen_s": 0.02,
+          "gone_s": 28.93,
+          "rec_s": 15.7,
+          "join_end_s": 30.4,
+          "pred_publish_failed": true,
+          "obs_publish_failed": true
+        },
+        {
+          "first_pttl_ms": 28673,
+          "first_seen_s": 0.02,
+          "gone_s": 28.93,
+          "rec_s": 16.7,
+          "join_end_s": 30.4,
+          "pred_publish_failed": true,
+          "obs_publish_failed": true
+        }
+      ],
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        15.7,
+        15.7,
+        16.7,
+        16.7
+      ],
+      "b_join_end_s": [
+        30.4,
+        30.4,
+        30.4,
+        30.4
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 88,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.4,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.2,
+        "end_data": "null",
+        "error_data": null
+      },
+      "extra_delay_s": 8.0
+    }
+  ]
+}

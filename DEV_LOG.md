@@ -129,3 +129,9 @@
 - 细扫:12 s 0/3,14 s 3/3,16 s 3/3。预测"14 s 为 1 到 2/3"错误,上一条"剩余 10 到 15 s 加宽限 5 s"的解释被推翻。
 - H2(事后):冻结时刻约在运行创建后 3 s,租约剩余约 12 到 15 s;冻结超过剩余寿命则 B 恢复后自我取消,运行随后被 A 的周期对账标 error。
 - 预测:本环境(自启动以来无杀进程)runs 表中 error 的运行数 ≈ A 日志中周期对账恢复数之和(recovered_a),recovered_b = 0;两者相差若不超过 8,可能来自被 Ctrl+C 中断的那一次运行。
+
+## 冻结日志证据与 PTTL 实验结果(对照运行前预测)
+- 预测"recovered_b = 0"被推翻:recovered_a 44、recovered_b 28,合计 72 = runs 中 error 数;interrupted 4 对应被 Ctrl+C 中断的那一次运行。
+- B 日志:72 条 "lost lease ownership; local execution was fenced"、72 条 "Skipping durable finalization ... no longer owns its lease"、72 条 journal 被取消并隔离,与 error 数一一对应;12 条 "producer lease expired ... cancelling its owner"、56 条 "producer lease was already stopped"。
+- PTTL 预测 8/8 命中(gone_s 27/24/21/29 s ±1.5 s)。27 s 门限 = 30 s 生产者租约 - 杀 B 时运行年龄(约 3 s)的相位锁定,不是常量。
+- 待做:对 error 的 72 个运行区分由哪个实例标记(看时间戳);用不同的 mock 时长再验证相位关系。
