@@ -1,0 +1,133 @@
+{
+  "note": "cancel frozen B lease15",
+  "freeze": true,
+  "holds": "6,20",
+  "trials": [
+    {
+      "freeze": true,
+      "hold_s": 6.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        6.03,
+        6.03,
+        6.03,
+        6.03
+      ],
+      "thawed_at_s": 5.8
+    },
+    {
+      "freeze": true,
+      "hold_s": 20.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "error": 4
+      },
+      "stop_reason": {
+        "orphan_recovered": 4
+      },
+      "term_s": [
+        24.96,
+        25.24,
+        25.24,
+        25.24
+      ],
+      "thawed_at_s": 19.85
+    },
+    {
+      "freeze": true,
+      "hold_s": 6.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        6.05,
+        6.05,
+        6.05,
+        6.31
+      ],
+      "thawed_at_s": 5.8
+    },
+    {
+      "freeze": true,
+      "hold_s": 20.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "error": 4
+      },
+      "stop_reason": {
+        "orphan_recovered": 4
+      },
+      "term_s": [
+        30.27,
+        30.27,
+        30.28,
+        30.28
+      ],
+      "thawed_at_s": 19.8
+    },
+    {
+      "freeze": true,
+      "hold_s": 6.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        5.98,
+        5.98,
+        6.24,
+        6.24
+      ],
+      "thawed_at_s": 5.8
+    },
+    {
+      "freeze": true,
+      "hold_s": 20.0,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "error": 4
+      },
+      "stop_reason": {
+        "orphan_recovered": 4
+      },
+      "term_s": [
+        20.27,
+        20.28,
+        20.55,
+        20.55
+      ],
+      "thawed_at_s": 19.86
+    }
+  ]
+}

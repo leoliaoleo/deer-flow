@@ -147,3 +147,8 @@
 - 尚未决定:取消 action 取 interrupt;终态是否为 interrupted(而非 error)待观察。
 
 - 预测补充(运行前,情形 2):hold=6 s 的运行,终态耗时约 6 到 11 s(解冻后加 0 到 5 s);hold=20 s 的运行,终态耗时小于 20 s(接管,租约到期约 15 到 20 s 之间);hold=6 时 stop_reason 不是 orphan_recovered。
+
+## 取消延迟结果对照预测
+- 情形 1:0.64 到 5.33 s,中位 2.56 s,预测成立。
+- 情形 2:hold=6 s 终态 6.0 到 6.3 s(预测 6 到 11 s,成立,但无额外心跳等待);hold=20 s 终态 20.3 到 30.3 s,orphan_recovered(预测"小于 20 s、走接管"被推翻)。
+- 待查:cancel() 对租约已过期的运行为何没有走 taken_over,要读 manager.py 1770 到 1940 行。

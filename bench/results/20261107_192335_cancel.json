@@ -1,0 +1,175 @@
+{
+  "note": "cancel healthy B lease15",
+  "freeze": false,
+  "holds": "6",
+  "trials": [
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        3.19,
+        3.19,
+        3.19,
+        3.19
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        5.06,
+        5.29,
+        5.33,
+        5.33
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        2.56,
+        2.56,
+        2.56,
+        2.56
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        1.49,
+        1.49,
+        1.5,
+        1.5
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        5.05,
+        5.05,
+        5.06,
+        5.06
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        0.65,
+        0.65,
+        0.65,
+        0.65
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        0.64,
+        0.64,
+        0.64,
+        0.64
+      ],
+      "thawed_at_s": null
+    },
+    {
+      "freeze": false,
+      "hold_s": null,
+      "runs": 4,
+      "cancel_http": {
+        "202": 4
+      },
+      "final": {
+        "interrupted": 4
+      },
+      "stop_reason": {
+        "None": 4
+      },
+      "term_s": [
+        0.69,
+        0.69,
+        0.69,
+        0.69
+      ],
+      "thawed_at_s": null
+    }
+  ]
+}
