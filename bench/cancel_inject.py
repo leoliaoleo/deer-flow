@@ -78,7 +78,7 @@ async def watch(client, r, t0, limit):
     r["final"] = "timeout"
 
 
-async def trial(client, freeze, hold, limit, n):
+async def trial(client, freeze, hold, limit, n, cancel_after=0.0):
     rs = [{"ready": asyncio.Event(), "thread_id": None, "run_id": None, "ended": False, "broke": None} for _ in range(n)]
     tasks = [asyncio.create_task(drive(client, r)) for r in rs]
     try:
@@ -92,13 +92,13 @@ async def trial(client, freeze, hold, limit, n):
     if freeze:
         os.kill(bpid, signal.SIGSTOP)
         frozen_at = time.time()
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(0.2 + cancel_after)
     t0 = time.time()
     try:
         await asyncio.gather(*[cancel(client, r, t0) for r in runs])
         watchers = [asyncio.create_task(watch(client, r, t0, limit)) for r in runs]
         if freeze:
-            await asyncio.sleep(max(0.0, hold - (time.time() - frozen_at)))
+            await asyncio.sleep(max(0.0, hold + cancel_after - (time.time() - frozen_at)))
             os.kill(bpid, signal.SIGCONT)
             thawed_s = round(time.time() - t0, 2)
         else:
@@ -129,6 +129,7 @@ async def main():
     ap.add_argument("--limit", type=int, default=90)
     ap.add_argument("--jitter", type=float, default=10.0)
     ap.add_argument("--note", default="")
+    ap.add_argument("--cancel-after", type=float, default=0.0)
     a = ap.parse_args()
     holds = [float(x) for x in a.holds.split(",")]
     results = []
@@ -144,7 +145,7 @@ async def main():
                 await asyncio.sleep(w)
             hold = holds[i % len(holds)]
             print("试验 %d/%d%s" % (i + 1, a.trials, (" 冻结 %.0f s" % hold) if a.freeze else ""), flush=True)
-            res = await trial(client, a.freeze, hold, a.limit, a.n)
+            res = await trial(client, a.freeze, hold, a.limit, a.n, a.cancel_after)
             print(json.dumps(res, ensure_ascii=False), flush=True)
             results.append(res)
     allt = [x for r in results for x in r["term_s"]]
@@ -154,7 +155,7 @@ async def main():
     d = os.path.join(REPO, "bench", "results")
     fn = os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + "_cancel.json")
     with open(fn, "w") as f:
-        json.dump({"note": a.note, "freeze": a.freeze, "holds": a.holds, "trials": results}, f, ensure_ascii=False, indent=2)
+        json.dump({"note": a.note, "freeze": a.freeze, "holds": a.holds, "cancel_after": a.cancel_after, "trials": results}, f, ensure_ascii=False, indent=2)
     print("已保存:", fn)
 
 
