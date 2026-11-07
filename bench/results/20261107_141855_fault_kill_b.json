@@ -1,0 +1,779 @@
+{
+  "run_ownership": "{\"lease_seconds\": 15, \"grace_seconds\": 5, \"heartbeat_enabled\": true}",
+  "per_gw": 4,
+  "timeout": 180,
+  "note": "lease15 early-join",
+  "jitter": 30.0,
+  "wait": 0.0,
+  "early_join": true,
+  "trials": [
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        27.6,
+        27.6,
+        27.6,
+        27.6
+      ],
+      "b_join_end_s": [
+        27.3,
+        27.3,
+        27.3,
+        27.3
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 8,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            27.3,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        28.8,
+        28.8,
+        28.8,
+        28.8
+      ],
+      "b_join_end_s": [
+        28.5,
+        28.5,
+        28.5,
+        28.5
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 10,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            28.5,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        22.5,
+        22.5,
+        22.5,
+        22.5
+      ],
+      "b_join_end_s": [
+        30.5,
+        30.5,
+        30.5,
+        30.5
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 9,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.5,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        19.5,
+        19.5,
+        19.5,
+        19.5
+      ],
+      "b_join_end_s": [
+        30.2,
+        30.2,
+        30.2,
+        30.2
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 9,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.2,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        26.8,
+        26.8,
+        26.8,
+        26.8
+      ],
+      "b_join_end_s": [
+        30.2,
+        30.2,
+        30.2,
+        30.2
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 8,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.2,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        28.6,
+        28.6,
+        28.6,
+        28.6
+      ],
+      "b_join_end_s": [
+        28.2,
+        28.2,
+        28.2,
+        28.2
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 9,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            28.2,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        26.7,
+        26.7,
+        26.7,
+        26.7
+      ],
+      "b_join_end_s": [
+        30.4,
+        30.4,
+        30.4,
+        30.4
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 8,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.4,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        18.5,
+        18.5,
+        18.5,
+        18.5
+      ],
+      "b_join_end_s": [
+        30.3,
+        30.3,
+        30.3,
+        30.3
+      ],
+      "b_join_start_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      },
+      "join_sample": {
+        "counts": {
+          "metadata": 1,
+          "values": 4,
+          "messages": 8,
+          "end": 1
+        },
+        "events": [
+          [
+            0.1,
+            "metadata"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            0.1,
+            "values"
+          ],
+          [
+            30.3,
+            "end"
+          ]
+        ],
+        "last_messages_s": 0.1,
+        "end_data": "null",
+        "error_data": null
+      }
+    }
+  ]
+}

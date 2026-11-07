@@ -99,3 +99,9 @@
 - 现象:fault_inject.py 在试验 1 之后自动 `start b`,120 秒内没有恢复;gateway-b.log 末尾为 asyncpg 的 ConnectionRefusedError 和 "Application startup failed",此时 deerflow-mi-postgres 已运行 30 分钟、45432 端口在监听。此前 20 次试验 B 均能自动恢复。
 - 预测(运行前写下):手动 `start b` 能成功(即瞬时拒绝);若再次出现 Connection refused,则存在持续性的 Postgres 连接问题,需要查端口转发或 Postgres 状态。
 - 脚本盲区:恢复 B 失败时只打印一行并直接保存结果,没有把失败写进 JSON。
+
+## early-join 8 次结果对照预测
+- 5 次早恢复 join_end 在 30.2 到 30.5 s(预测 29.5 到 33 s),3 次晚恢复差值 -0.3/-0.3/-0.4 s(预测 ±1.5 s),预测成立;join 起点 0.0 s(修改生效)。
+- 26 次(lease 15)合并:早/晚恢复边界在 26.8 到 27.4 s。
+- 待办:读 backend/packages/harness/deerflow/runtime/stream_bridge/redis.py 中生产者租约时长,核对 27 s 门限。
+- 注意:fault_inject.py 调用 dev_multi_instance.sh start b 时需继承 DEERFLOW_MI_POSTGRES_PORT / DEERFLOW_MI_REDIS_PORT,否则 B 以默认 55432 连接而启动失败(本次已验证)。
