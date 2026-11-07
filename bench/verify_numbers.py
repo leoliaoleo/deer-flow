@@ -18,7 +18,7 @@ def eq(name, got, want, tol=0.0):
 
 
 def le(name, got, limit):
-    ok = got <= limit
+    ok = got <= limit + 1e-9
     print("  %s %-46s 重算=%s 文档上限=%s" % ("OK  " if ok else "FAIL", name, round(got, 3), limit))
     if not ok:
         bad.append(name)
@@ -120,7 +120,7 @@ if pt:
         rules += [(r["pred_publish_failed"], r["obs_publish_failed"]) for r in t["pttl_rule"]]
     eq("PTTL: 试验数", len(devs), 8)
     le("PTTL: gone_s 与预测最大偏差(预测窗 1.5 s)", max(devs), 1.5)
-    le("PTTL: gone_s 与预测最大偏差(文档称 0.5 s)", max(devs), 0.5)
+    eq("PTTL: gone_s 与预测最大偏差(文档已更正为 0.54 s)", max(devs), 0.54, 0.005)
     eq("PTTL: 运行总数", len(rules), 32)
     eq("PTTL: 模糊区运行数", sum(1 for p in rules if p[0] == "ambiguous"), 13)
     eq("PTTL: 预测补写成功的运行数", sum(1 for p in rules if p[0] is False), 15)
