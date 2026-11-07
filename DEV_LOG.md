@@ -135,3 +135,7 @@
 - B 日志:72 条 "lost lease ownership; local execution was fenced"、72 条 "Skipping durable finalization ... no longer owns its lease"、72 条 journal 被取消并隔离,与 error 数一一对应;12 条 "producer lease expired ... cancelling its owner"、56 条 "producer lease was already stopped"。
 - PTTL 预测 8/8 命中(gone_s 27/24/21/29 s ±1.5 s)。27 s 门限 = 30 s 生产者租约 - 杀 B 时运行年龄(约 3 s)的相位锁定,不是常量。
 - 待做:对 error 的 72 个运行区分由哪个实例标记(看时间戳);用不同的 mock 时长再验证相位关系。
+
+## 夜间整理:文档缺口与更正
+- RESUME.md 缺第 5、6 条与讲述稿(此前一块文档命令未执行,三次 "placeholder not found: 0" 为证),已整合补上。
+- 更正:冻结实验的 error 约 44 个由 A 标、约 28 个由 B 恢复后自标(此前表述为"存活实例");PTTL 失败一侧只有 1 个独立样本;杀实例试验共 47 次、每侧 188 个运行。
