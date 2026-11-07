@@ -51,3 +51,9 @@
 - 注意:本次 base config 用的是原 config.yaml(含 deepseek),因为新终端没有带 DEERFLOW_MI_BASE_CONFIG;lead_agent 取 models[0](mock)故未产生费用。压测前必须确认只用 bench 配置。
 - 上游把"stop b --kill 时 A 的运行不得变 error""跨实例取消约 10 秒内生效"列为"手工检查"(MANUAL_CHECKS),未自动化也未量化,这是我们可补的方向。
 - 示例配置中的 my_package 拦截器路径导致每个 Gateway 启动时打印 ImportError 调用栈(无功能影响),疑似可清理的小问题,暂不处理。
+
+## 故障注入预测(运行前写下)
+- B 被 SIGKILL 后,B 上进行中的运行不会被 A 接管续跑,最终状态为 error(依据常量 LEASE_ORPHAN_RECOVERY_ERROR 与 STARTUP_ORPHAN_RECOVERY_ERROR;对账函数尚未读)。
+- 变成 error 的耗时约为租约 30 s + 宽限 10 s + 对账周期(未知),预计 40 s 以上。
+- A 上的运行不受影响,全部 success。
+- B 的客户端流会立即断开。
