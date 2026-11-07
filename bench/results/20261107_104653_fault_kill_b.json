@@ -1,0 +1,433 @@
+{
+  "run_ownership": "{\"lease_seconds\": 15, \"grace_seconds\": 5, \"heartbeat_enabled\": true}",
+  "per_gw": 4,
+  "timeout": 180,
+  "note": "kill b x8 lease15 grace5",
+  "jitter": 30.0,
+  "trials": [
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        27.8,
+        27.8,
+        27.8,
+        27.8
+      ],
+      "b_join_end_s": [
+        27.2,
+        27.2,
+        27.2,
+        27.2
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        27.4,
+        27.4,
+        27.4,
+        27.4
+      ],
+      "b_join_end_s": [
+        27.1,
+        27.1,
+        27.1,
+        27.1
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        21.6,
+        22.6,
+        22.6,
+        22.6
+      ],
+      "b_join_end_s": [
+        35.0,
+        35.0,
+        35.0,
+        35.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        28.4,
+        28.4,
+        28.4,
+        29.4
+      ],
+      "b_join_end_s": [
+        28.4,
+        28.4,
+        28.4,
+        28.4
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        21.4,
+        21.4,
+        21.4,
+        21.4
+      ],
+      "b_join_end_s": [
+        34.9,
+        34.9,
+        34.9,
+        34.9
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        19.3,
+        20.3,
+        20.3,
+        20.3
+      ],
+      "b_join_end_s": [
+        19.8,
+        19.8,
+        19.8,
+        19.8
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        20.2,
+        20.2,
+        21.2,
+        21.2
+      ],
+      "b_join_end_s": [
+        35.0,
+        35.0,
+        35.0,
+        35.0
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    },
+    {
+      "a_client_ended": "4/4",
+      "a_server_status": {
+        "success": 4
+      },
+      "b_inflight_at_kill": 4,
+      "b_port_closed_after_kill": true,
+      "b_stream_broke": {
+        "RemoteProtocolError": 4
+      },
+      "b_without_run_id": 0,
+      "b_final_status": {
+        "error": 4
+      },
+      "b_recovered_s": [
+        31.8,
+        31.8,
+        31.8,
+        31.8
+      ],
+      "b_join_end_s": [
+        31.1,
+        31.1,
+        31.1,
+        31.1
+      ],
+      "b_join": {
+        "(200, None)": 4
+      },
+      "sample_info": {
+        "keys": [
+          "assistant_id",
+          "created_at",
+          "kwargs",
+          "lead_agent_tokens",
+          "llm_call_count",
+          "message_count",
+          "metadata",
+          "middleware_tokens",
+          "multitask_strategy",
+          "run_id",
+          "status",
+          "stop_reason",
+          "subagent_tokens",
+          "thread_id",
+          "total_input_tokens",
+          "total_output_tokens",
+          "total_tokens",
+          "updated_at"
+        ],
+        "stop_reason": "orphan_recovered"
+      }
+    }
+  ]
+}
