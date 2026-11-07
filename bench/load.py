@@ -111,7 +111,7 @@ async def main():
     print(json.dumps(out, ensure_ascii=False, indent=2))
     d = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
     os.makedirs(d, exist_ok=True)
-    with open(os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + f"_c{a.c}.json"), "w") as f:
+    with open(os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + f"_c{a.c}_{os.getpid()}.json"), "w") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
 
