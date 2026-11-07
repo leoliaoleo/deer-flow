@@ -108,10 +108,29 @@ async def watch_join(client, r, t_kill, timeout):
             r["join_http"] = resp.status_code
             if resp.status_code != 200:
                 return
+            r["join_counts"] = {}
+            r["join_events"] = []
+            pending_end = False
             async for line in resp.aiter_lines():
-                if line.startswith("event:") and line[6:].strip() == "end":
-                    r["join_end_s"] = round(time.time() - t_kill, 1)
-                    return
+                if pending_end:
+                    if line.startswith("data:"):
+                        r["join_end_data"] = line[5:].strip()[:200]
+                    if line.startswith("data:") or line == "":
+                        return
+                    continue
+                if line.startswith("event:"):
+                    ev = line[6:].strip()
+                    r["join_counts"][ev] = r["join_counts"].get(ev, 0) + 1
+                    now = round(time.time() - t_kill, 1)
+                    if ev == "messages":
+                        r["join_last_msg_s"] = now
+                    elif len(r["join_events"]) < 40:
+                        r["join_events"].append([now, ev])
+                    if ev == "end":
+                        r["join_end_s"] = now
+                        pending_end = True
+                elif line.startswith("data:") and r["join_events"] and r["join_events"][-1][1] == "error" and "join_error_data" not in r:
+                    r["join_error_data"] = line[5:].strip()[:200]
                 if time.time() - t_kill > timeout:
                     return
     except Exception as e:
@@ -155,6 +174,9 @@ async def trial(client, per_gw, timeout):
         "b_join_end_s": sorted(r["join_end_s"] for r in bs if r.get("join_end_s") is not None),
         "b_join": count((r.get("join_http"), r.get("join_err")) for r in bs),
         "sample_info": next((r["info"] for r in bs if r.get("info")), None),
+        "join_sample": next(({"counts": r["join_counts"], "events": r["join_events"], "last_messages_s": r.get("join_last_msg_s"),
+                              "end_data": r.get("join_end_data"), "error_data": r.get("join_error_data")}
+                             for r in bs if r.get("join_counts")), None),
     }
 
 
@@ -165,6 +187,7 @@ async def main():
     ap.add_argument("--timeout", type=int, default=180)
     ap.add_argument("--note", default="")
     ap.add_argument("--jitter", type=float, default=0.0)
+    ap.add_argument("--wait", type=float, default=0.0)
     a = ap.parse_args()
     for name, base in (("A", A), ("B", B)):
         try:
@@ -178,9 +201,9 @@ async def main():
     results = []
     async with httpx.AsyncClient(timeout=httpx.Timeout(60.0)) as client:
         for i in range(a.trials):
-            if a.jitter and i > 0:
-                js = random.uniform(0, a.jitter)
-                print("  随机等待 %.1f s" % js, flush=True)
+            if (a.wait or a.jitter) and i > 0:
+                js = a.wait if a.wait else random.uniform(0, a.jitter)
+                print("  等待 %.1f s" % js, flush=True)
                 await asyncio.sleep(js)
             print("试验 %d/%d" % (i + 1, a.trials), flush=True)
             res = await trial(client, a.per_gw, a.timeout)
@@ -201,7 +224,7 @@ async def main():
     os.makedirs(d, exist_ok=True)
     fn = os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + "_fault_kill_b.json")
     with open(fn, "w") as f:
-        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note, "jitter": a.jitter,
+        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note, "jitter": a.jitter, "wait": a.wait,
                    "trials": results}, f, ensure_ascii=False, indent=2)
     print("已保存:", fn)
 
