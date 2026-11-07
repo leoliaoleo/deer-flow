@@ -89,3 +89,8 @@
 - H 的日志预测在 18 个恢复事件上全部吻合(失败发布 0/4 行序列与预测一致,共 44 行):恢复耗时 18.5 到 26.5 s 的 11 次各 4 行失败发布,27.4 到 32.8 s 的 7 次为 0 行;失败原因为 redis.py _xadd_without_active_producer 抛出 "another active producer exists"(经 publish_end,由 deps.py 的 _publish_recovered_run_stream_end 调用)。27 s 门限的来源未读代码,未解释。
 - 更正:fault_inject.py 先等 A 的 4 个流结束(约 5 s)才开始 join,所以 join 起点约 4.8 s 是脚本造成的,join_end 的 20 s / 35 s 取决于该起点,不是系统性质。
 - 预测(运行前写下):让 join 在杀 B 的同一时刻开始(join 起点约 0 到 2 s)。早恢复试验 join_end 在约 29.5 到 33 s;晚恢复试验 join_end 在恢复时刻 ±1.5 s 内。若早恢复试验的 join_end 仍稳定在约 35 s,则"空闲检查从连接时刻起算"的模型不成立。
+
+## Windows 保留端口导致 Docker 端口发布失败
+- 现象:docker run -p 127.0.0.1:55432:5432 报 "ports are not available ... /forwards/expose returned unexpected status: 500"。前两次相同端口可用。
+- 原因:netsh interface ipv4 show excludedportrange protocol=tcp 显示 55374 到 55473 在 Windows 的动态保留范围内(Hyper-V/WSL/Docker 网络组件占用,重启后可能变化),55432 落在其中。重启 Docker 无效。
+- 处理:把多实例脚本的 Postgres/Redis 端口通过 DEERFLOW_MI_POSTGRES_PORT / DEERFLOW_MI_REDIS_PORT 换到未保留的 45432 / 46379;up_mi.sh 的端口占用检查改为随之可配。
