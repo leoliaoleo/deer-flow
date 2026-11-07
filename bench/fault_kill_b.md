@@ -166,3 +166,13 @@
 - 解读:恢复耗时 < 约 27 s 时补写 end 失败,join 靠空闲存活检查在其后的检查点结束;≥ 约 27 s 时补写成功,join 立即结束。5 次早恢复的 join_end 约 30.3 s 与"每 15 s 一次、从连接时刻起算"一致,但这 5 次的恢复都在 15 到 30 s 之间,检查点周期 15 s 本身没有被单独检验(没有恢复发生在 15 s 以前的试验)。
 - 推测(未读代码):27 s 的门限可能对应 Redis 终态流生产者租约长度;待读 redis.py 证实。
 - 注意:早恢复时状态接口已报告 error,而 join 要多等 3 到 12 s;客户端同时轮询状态可更早得知。
+
+---
+
+# 补充:读 redis.py 对 27 s 门限的解释(2026-11-07,推断,未直接验证)
+
+- redis.py 常量:_PRODUCER_LEASE_SECONDS = 30,_PRODUCER_LEASE_RENEW_INTERVAL_SECONDS = 10,producer_lease_retry_delay_seconds = 31;补写 end 的 _xadd_without_active_producer 通过 Lua 脚本在存在 producer-active 键时返回 _XADD_BLOCKED,抛出 "another active producer exists"。
+- 推断:被杀后 B 登记的生产者租约剩余 20 到 30 s(最后一次续约在被杀前 0 到 10 s),租约存在期间 A 补写 end 被拒,过期后补写成功。观测到的补写成功边界 26.8 到 27.4 s 落在该区间内,与之吻合。
+- 此门限与 run_ownership 的租约无关:lease 30 的 12 次试验恢复耗时均在 38 s 以上,补写总成功;lease 15 的 26 次试验,边界稳定在约 27 s。
+- 未验证:没有直接观测 producer-active 键的剩余寿命;构造参数 producer_lease_recovery_enabled(默认 False)是否开启、31 s 的重试延迟是否参与,均未读。
+- 待做预测(运行前写下):杀 B 后读取 producer-active 键的 PTTL,初值应在 20 到 30 s 之间,键消失的时刻应与补写 end 成功的时刻吻合(误差 1 s 内)。

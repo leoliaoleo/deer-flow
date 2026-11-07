@@ -105,3 +105,6 @@
 - 26 次(lease 15)合并:早/晚恢复边界在 26.8 到 27.4 s。
 - 待办:读 backend/packages/harness/deerflow/runtime/stream_bridge/redis.py 中生产者租约时长,核对 27 s 门限。
 - 注意:fault_inject.py 调用 dev_multi_instance.sh start b 时需继承 DEERFLOW_MI_POSTGRES_PORT / DEERFLOW_MI_REDIS_PORT,否则 B 以默认 55432 连接而启动失败(本次已验证)。
+
+## 27 s 门限的读码推断
+- 见 bench/fault_kill_b.md 末节。待验证预测:杀 B 后 producer-active 键 PTTL 初值 20 到 30 s,键消失时刻与补写 end 成功时刻一致。
