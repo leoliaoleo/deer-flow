@@ -3,7 +3,7 @@
 Per trial: how B's client streams break, how long until A reports B's runs terminal (and with
 which status), when a reconnecting client's join on A reaches `end`, and whether A's own runs
 survive. Token comes from the file named by DF_PAT_FILE and is never printed."""
-import argparse, asyncio, json, os, re, socket, subprocess, time
+import argparse, asyncio, json, os, random, re, socket, subprocess, time
 from urllib.parse import urlparse
 import httpx
 
@@ -164,6 +164,7 @@ async def main():
     ap.add_argument("--per-gw", type=int, default=4)
     ap.add_argument("--timeout", type=int, default=180)
     ap.add_argument("--note", default="")
+    ap.add_argument("--jitter", type=float, default=0.0)
     a = ap.parse_args()
     for name, base in (("A", A), ("B", B)):
         try:
@@ -177,6 +178,10 @@ async def main():
     results = []
     async with httpx.AsyncClient(timeout=httpx.Timeout(60.0)) as client:
         for i in range(a.trials):
+            if a.jitter and i > 0:
+                js = random.uniform(0, a.jitter)
+                print("  随机等待 %.1f s" % js, flush=True)
+                await asyncio.sleep(js)
             print("试验 %d/%d" % (i + 1, a.trials), flush=True)
             res = await trial(client, a.per_gw, a.timeout)
             print(json.dumps(res, ensure_ascii=False, indent=2), flush=True)
@@ -196,7 +201,7 @@ async def main():
     os.makedirs(d, exist_ok=True)
     fn = os.path.join(d, time.strftime("%Y%m%d_%H%M%S") + "_fault_kill_b.json")
     with open(fn, "w") as f:
-        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note,
+        json.dump({"run_ownership": own, "per_gw": a.per_gw, "timeout": a.timeout, "note": a.note, "jitter": a.jitter,
                    "trials": results}, f, ensure_ascii=False, indent=2)
     print("已保存:", fn)
 
