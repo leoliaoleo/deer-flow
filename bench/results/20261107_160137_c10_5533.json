@@ -1,0 +1,22 @@
+{
+  "time": "2026-11-07 16:01:37",
+  "c": 10,
+  "n": 150,
+  "note": "mi no-fault B c=10 n=150",
+  "commit": "3b72f73",
+  "ok": 150,
+  "bad": {},
+  "wall_s": 141.91,
+  "throughput_rps": 1.06,
+  "ttfe_p50": 0.24,
+  "ttfe_p95": 1.04,
+  "ttft_p50": 1.533,
+  "ttft_p95": 2.797,
+  "total_p50": 9.318,
+  "total_p95": 10.919,
+  "total_p99": 11.028,
+  "gateway_rss_mb": [
+    null,
+    342
+  ]
+}

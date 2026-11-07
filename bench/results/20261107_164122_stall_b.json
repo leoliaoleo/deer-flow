@@ -1,0 +1,262 @@
+{
+  "note": "lease15 freeze healthy B",
+  "stalls": "10,18,22,26,34",
+  "reps": 3,
+  "trials": [
+    {
+      "stall_s": 22.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 0,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 18.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 0,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 34.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 26.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 34.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 34.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 26.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 10.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "success": 4
+      },
+      "b_stop_reason": {
+        "None": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 18.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 26.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 0,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 10.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "success": 4
+      },
+      "b_stop_reason": {
+        "None": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 22.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 18.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 0,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 22.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "error": 4
+      },
+      "b_stop_reason": {
+        "orphan_recovered": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    },
+    {
+      "stall_s": 10.0,
+      "b_inflight_at_stall": 4,
+      "b_final": {
+        "success": 4
+      },
+      "b_stop_reason": {
+        "None": 4
+      },
+      "a_final": {
+        "success": 4
+      },
+      "b_streams_ended": 4,
+      "b_streams_broke": {
+        "None": 4
+      }
+    }
+  ]
+}
