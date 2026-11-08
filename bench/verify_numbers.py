@@ -134,6 +134,46 @@ eq("客户端 ok 总数", sum(d["ok"] for d in nf), 900)
 eq("客户端 bad 总数", sum(sum(d["bad"].values()) for d in nf), 0)
 print("  说明: 库中 912 = 900 + 12 次预热(4 个压测进程各 3 次);此数字无法从 JSON 重算")
 
+print("== 取消延迟 ==")
+cs = load("*_cancel.json")
+healthy = [d for fn, d in cs if not d.get("freeze")]
+frozen = [d for fn, d in cs if d.get("freeze") and not d.get("cancel_after")]
+expired = [d for fn, d in cs if d.get("freeze") and d.get("cancel_after")]
+eq("取消结果文件总数", len(cs), 4)
+eq("健康 B 文件数", len(healthy), 1)
+eq("冻结(取消时租约有效)文件数", len(frozen), 1)
+eq("租约已过期文件数", len(expired), 2)
+if len(healthy) == 1:
+    ts = sorted(x for t in healthy[0]["trials"] for x in t["term_s"])
+    eq("健康 B: 试验数", len(healthy[0]["trials"]), 8)
+    eq("健康 B: 运行数", len(ts), 32)
+    eq("健康 B: 最小(s)", ts[0], 0.64, 0.005)
+    eq("健康 B: 中位(s,第 17 个)", ts[len(ts) // 2], 2.56, 0.005)
+    eq("健康 B: 最大(s)", ts[-1], 5.33, 0.005)
+    eq("健康 B: interrupted 运行数", sum(t["final"].get("interrupted", 0) for t in healthy[0]["trials"]), 32)
+if len(frozen) == 1:
+    tr = frozen[0]["trials"]
+    h6 = [t for t in tr if t["hold_s"] == 6.0]
+    h20 = [t for t in tr if t["hold_s"] == 20.0]
+    eq("冻结 6 s: 试验数", len(h6), 3)
+    eq("冻结 6 s: interrupted 运行数", sum(t["final"].get("interrupted", 0) for t in h6), 12)
+    eq("冻结 6 s: 终态最小(s)", min(x for t in h6 for x in t["term_s"]), 5.98, 0.005)
+    eq("冻结 6 s: 终态最大(s)", max(x for t in h6 for x in t["term_s"]), 6.31, 0.005)
+    eq("冻结 20 s: 试验数", len(h20), 3)
+    eq("冻结 20 s: error 运行数", sum(t["final"].get("error", 0) for t in h20), 12)
+    eq("冻结 20 s: 终态最小(s)", min(x for t in h20 for x in t["term_s"]), 20.27, 0.005)
+    eq("冻结 20 s: 终态最大(s)", max(x for t in h20 for x in t["term_s"]), 30.28, 0.005)
+if expired:
+    tr = [t for d in expired for t in d["trials"]]
+    allt = [x for t in tr for x in t["term_s"]]
+    eq("租约已过期: 试验数", len(tr), 12)
+    eq("租约已过期: 运行数", len(allt), 48)
+    eq("租约已过期: error 运行数", sum(t["final"].get("error", 0) for t in tr), 48)
+    eq("租约已过期: 终态最小(s)", min(allt), 0.05, 0.005)
+    eq("租约已过期: 终态最大(s)", max(allt), 0.16, 0.005)
+    eq("租约已过期: 返回 202 的试验数", sum(1 for t in tr if "202" in t["cancel_http"]), 8)
+    eq("租约已过期: 返回 409 的试验数", sum(1 for t in tr if "409" in t["cancel_http"]), 4)
+
 print("\n不一致项: %d" % len(bad))
 for b in bad:
     print("  - " + b)
